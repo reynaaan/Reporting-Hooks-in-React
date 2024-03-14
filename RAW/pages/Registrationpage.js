@@ -49,19 +49,20 @@ function Registrationpage(props) {
           value={email}
           onChangeText={(text) => setEmail(text)}
         />
-        <TextInput
-          style={styles.input}
-          label="Password"
-          placeholder="Password"
-          secureTextEntry={!showPassword}
+        <TextInput 
+          placeholder='Password'
+          label='Password'
+          style = {styles.input}
+          secureTextEntry = {!showPassword}
           right={
-            <TextInput.Icon
-              name={showPassword ? 'eye' : 'eye-off'}
-              onPress={() => setShowPassword(!showPassword)}
-            />
+        <TextInput.Icon
+          icon={showPassword ? "eye" : "eye-off"}
+          onPress={() => {
+          Keyboard.dismiss;
+          setShowPassword(!showPassword);
+          }}
+        />
           }
-          value={password}
-          onChangeText={(text) => setPassword(text)}
         />
         <Button
           style={styles.registerButton}

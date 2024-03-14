@@ -32,21 +32,23 @@ const Loginpage = (props) => {
           label="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
+          color={COLORS.black}
         />
-        <TextInput
-          style={styles.input}
-          label="Password"
-          placeholder="Password"
-          secureTextEntry={!showPassword}
+        <TextInput 
+          placeholder='Password'
+          label='Password'
+          style = {styles.input}
+          secureTextEntry = {!showPassword}
           right={
-            <TextInput.Icon
-              name={showPassword ? "eye" : "eye-off"}
-              onPress={() => setShowPassword(!showPassword)}
-              color={COLORS.teal}
-            />
+        <TextInput.Icon
+              icon={showPassword ? "eye" : "eye-off"}
+              onPress={() => {
+                Keyboard.dismiss;
+                setShowPassword(!showPassword);
+          }}
+            color={COLORS.teal}
+        />
           }
-          value={password}
-          onChangeText={(text) => setPassword(text)}
         />
         <TouchableOpacity onPress={() => props.navigation.navigate("AccRecovery")}>
           <Text style={styles.forgotPassword}>Forgot Password?</Text>
