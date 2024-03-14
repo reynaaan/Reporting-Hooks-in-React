@@ -1,22 +1,21 @@
-/* Reynan Jhay A. Busano, Anven Moses L. Agbulos, Wyne Khristian B. Ipanag
-   IT73/IT35B - Application Development */
-
-import * as React from "react";
+import React, { useState } from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
-import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import { Montserrat_400Regular } from '@expo-google-fonts/montserrat';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import COLORS from "../constants/colors";
 import logo from "../assets/RAWLOGO.jpg";
 
-function Loginpage(props) {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  let [fontsLoaded] = useFonts({
+const Loginpage = (props) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Montserrat_400Regular,
-    Montserrat_700Bold,
   });
 
   const handleLogin = () => {
@@ -43,6 +42,7 @@ function Loginpage(props) {
             <TextInput.Icon
               name={showPassword ? "eye" : "eye-off"}
               onPress={() => setShowPassword(!showPassword)}
+              color={COLORS.teal}
             />
           }
           value={password}
@@ -70,7 +70,7 @@ function Loginpage(props) {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -78,8 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: COLORS.white,
-    paddingHorizontal: 80,
-    paddingVertical: 100,
+    paddingHorizontal: 20,
   },
   contentContainer: {
     backgroundColor: COLORS.white,
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 450,
-    width: 400,
+    width: 450,
     resizeMode: "contain",
     marginBottom: 20,
     alignSelf: "center",
@@ -111,7 +110,6 @@ const styles = StyleSheet.create({
   },
   input: {
     fontFamily: 'Montserrat_400Regular',
-    width: "100%",
     marginBottom: 15,
   },
   forgotPassword: {

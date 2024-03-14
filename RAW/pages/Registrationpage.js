@@ -3,6 +3,8 @@
 
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, TextInput } from 'react-native-paper';
 import { useFonts } from 'expo-font';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 450,
-    width: 400,
+    width: 450,
     marginBottom: 20,
   },
   title: {
