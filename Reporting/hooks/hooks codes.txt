@@ -1,0 +1,154 @@
+undefined
+
+// useState
+import React from 'react';
+import Counter from './useState';
+
+function App() {
+  return (
+    <div className="App">
+      <Counter />
+    </div>
+  );
+}
+
+export default App;
+----------------------------------------
+//useEffect
+import React from 'react';
+import Timer from './useEffect';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Timer App</h1>
+      <Timer />
+    </div>
+  );
+};
+
+export default App;
+--------------------------------------------
+//useContext
+import React from 'react';
+import './App.css';
+import ThemeToggler from './ThemeToggler';
+import { ThemeProvider } from './useContext';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <div className="App">
+        <header className="App-header">
+          <ThemeToggler />
+        </header>
+      </div>
+    </ThemeProvider>
+  );
+}
+
+export default App;
+--------------------------------------
+//useReducer
+import React from 'react';
+import Counter from './useReducer';
+
+const App = () => {
+  return (
+    <div>
+      <h1>COUNTER</h1>
+      <Counter />
+    </div>
+  );
+};
+
+export default App;
+-------------------------------------------
+//useCallback
+import React, { useState, useCallback } from 'react';
+import MemoizedButton from './useCallback';
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <MemoizedButton onClick={handleClick} />
+    </div>
+  );
+};
+
+export default App;
+----------------------------------------------------
+//useMemo
+import React, { useState, useMemo } from 'react';
+
+const ExpensiveComponent = ({ count }) => {
+  const result = useMemo(() => {
+    // Some expensive calculation
+    return count * 2;
+  }, [count]);
+
+  return <p>Result: {result}</p>;
+};
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <ExpensiveComponent count={count} />
+    </div>
+  );
+};
+
+export default App;
+----------------------------------------------------
+//useRef
+import React, { useRef } from 'react';
+
+const App = () => {
+  const inputRef = useRef();
+
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <input ref={inputRef} type="text" style={{ padding: '10px', fontSize: '20px' }} />
+      <button onClick={handleClick} style={{ padding: '10px 20px', fontSize: '20px', marginLeft: '10px' }}>Focus Input</button>
+    </div>
+  );
+};
+
+export default App;
+---------------------------------------------------------------------------------------
+//useImperativeHandle
+import React, { useRef } from 'react';
+import CustomInput from './useImperativeHandle';
+
+function App() {
+  const inputRef = useRef();
+
+  const handleButtonClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <h1>Custom Input Component</h1>
+      <CustomInput ref={inputRef} />
+      <button onClick={handleButtonClick}>Focus Input</button>
+    </div>
+  );
+}
+
+export default App;
+
