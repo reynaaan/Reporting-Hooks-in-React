@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@expo-google-fonts/dev": "^0.2.3",
-    "@react-navigation/native": "^6.1.15",
-    "@react-navigation/stack": "^6.3.27",
-    "react-native-paper": "^5.12.3"
-  }
-}
